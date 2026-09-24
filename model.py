@@ -21,10 +21,12 @@ class Table:
 class Order:
     pass
 
-
 class OrderItem:
     pass
 
 
 class MenuItem:
-    pass
+
+    def __init__(self, name, price):
+        self.item_name = name
+        self.price = price

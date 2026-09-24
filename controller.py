@@ -27,7 +27,11 @@ class Controller:
     def seat_touched(self, seat_number):
         raise RuntimeError('seat_touched: some subclasses must implement')
 
-    def table_touched(self, table_index):
+    def table_touched(self, table_number):
+
+        
+
+
         raise RuntimeError('table_touched: some subclasses must implement')
 
 
@@ -38,7 +42,16 @@ class RestaurantController(Controller):
 
 
 class TableController(Controller):
-    pass
+
+    def __init__(self, view, restaurant, table):
+        super().__init__(view, restaurant)
+        self.view = view
+        self.restaurant = restaurant
+        self.table = table
+
+    def create_ui(self):
+        self.view.create_table_ui()
+
 
 
 class OrderController(Controller):
