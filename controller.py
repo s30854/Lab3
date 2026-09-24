@@ -8,6 +8,7 @@ class Controller:
     def __init__(self, view, restaurant):
         self.view = view
         self.restaurant = restaurant
+        self.table = None
 
     def add_item(self, item):
         raise RuntimeError('add_item: some subclasses must implement')
@@ -28,11 +29,8 @@ class Controller:
         raise RuntimeError('seat_touched: some subclasses must implement')
 
     def table_touched(self, table_number):
-
-        akjsdkand
-
-
-        raise RuntimeError('table_touched: some subclasses must implement')
+        self.table = self.restaurant.tables[table_number]
+        self.view.set_controller(TableController(self.view, self.restaurant,self.table))
 
 
 class RestaurantController(Controller):
@@ -50,7 +48,7 @@ class TableController(Controller):
         self.table = table
 
     def create_ui(self):
-        self.view.create_table_ui()
+        self.view.create_table_ui(self.table)
 
 
 
