@@ -1,4 +1,4 @@
-from model import Table
+from model import Table, Order
 
 
 class Controller:
@@ -11,8 +11,6 @@ class Controller:
     def __init__(self, view, restaurant):
         self.view = view
         self.restaurant = restaurant
-        self.table = None
-        self.seat_number=None
 
     def add_item(self, item):
         raise RuntimeError('add_item: some subclasses must implement')
@@ -24,24 +22,27 @@ class Controller:
         raise RuntimeError('create_ui: all subclasses must implement')
 
     def done(self):
-        self.view.set_controller(RestaurantController(self.view, self.restaurant))
+        raise RuntimeError('done: all subclasses must implement')
 
     def place_order(self):
         raise RuntimeError('place_order: some subclasses must implement')
 
     def seat_touched(self, seat_number):
-        self.seat_number = self.table.n_seats
-        self.view.set_controller(OrderController(self.view, self.restaurant,self.table, self.seat_number))
+        raise RuntimeError('seat_touched: some subclasses must implement')
 
     def table_touched(self, table_number):
-        self.table = self.restaurant.tables[table_number]
-        self.view.set_controller(TableController(self.view, self.restaurant,self.table))
+        raise RuntimeError('table_touched: some subclasses must implement')
 
 
 class RestaurantController(Controller):
 
+
     def create_ui(self):
         self.view.create_restaurant_ui()
+
+    def table_touched(self, table_number):
+        table = self.restaurant.tables[table_number]
+        self.view.set_controller(TableController(self.view, self.restaurant,table))
 
 
 class TableController(Controller):
@@ -55,6 +56,13 @@ class TableController(Controller):
     def create_ui(self):
         self.view.create_table_ui(self.table)
 
+    def done(self):
+        self.view.set_controller(RestaurantController(self.view, self.restaurant))
+
+    def seat_touched(self, seat_number):
+        seat_number = self.table.n_seats
+        self.view.set_controller(OrderController(self.view, self.restaurant,self.table, seat_number))
+
 
 
 class OrderController(Controller):
@@ -64,8 +72,9 @@ class OrderController(Controller):
         self.restaurant = restaurant
         self.table = table
         self.seat_number = seat_number
+        self.order = self.table.order_for(self.seat_number)
     def create_ui(self):
-        self.view.create_order_ui(self.table.order_for(self.seat_number))
+        self.view.create_order_ui(self.order)
 
     def add_item(self, menu_item):
-        self.restaurant.add_item(menu_item)
+        self.order.add_item(menu_item)

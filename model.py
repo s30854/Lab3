@@ -22,14 +22,22 @@ class Table:
 
 
 class Order:
-    pass
+
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, menu_item):
+        self.items.append(menu_item)
 
 class OrderItem:
-    pass
+
+    def __init__(self, menu_item):
+        self.menu_item = menu_item
+
 
 
 class MenuItem:
 
     def __init__(self, name, price):
-        self.item_name = name
+        self.name = name
         self.price = price
