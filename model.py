@@ -6,7 +6,7 @@ class Restaurant:
     def __init__(self):
         self.tables = [Table(seats, loc) for seats, loc in TABLES]
         # TODO: uncomment next line
-        # self.menu_items = [MenuItem(name, price) for name, price in MENU_ITEMS]
+        self.menu_items = [MenuItem(name, price) for name, price in MENU_ITEMS]
 
 
 class Table:
@@ -15,7 +15,10 @@ class Table:
         self.n_seats = seats
         self.location = location
         # TODO: Uncomment next line
-        # self.orders = [Order() for _ in range(seats)]
+        self.orders = [Order() for _ in range(seats)]
+
+    def order_for(self,seat):
+        return self.orders[seat - 1]
 
 
 class Order:

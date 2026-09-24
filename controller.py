@@ -1,3 +1,6 @@
+from model import Table
+
+
 class Controller:
     """
     Do not modify this class, just its subclasses. Represents common behaviour of all
@@ -27,7 +30,7 @@ class Controller:
         raise RuntimeError('place_order: some subclasses must implement')
 
     def seat_touched(self, seat_number):
-        self.seat_number = self.restaurant.get_seat[seat_number]
+        self.seat_number = self.table.n_seats
         self.view.set_controller(OrderController(self.view, self.restaurant,self.table, self.seat_number))
 
     def table_touched(self, table_number):
@@ -62,7 +65,7 @@ class OrderController(Controller):
         self.table = table
         self.seat_number = seat_number
     def create_ui(self):
-        self.view.create_order_ui(self.seat_number)
+        self.view.create_order_ui(self.table.order_for(self.seat_number))
 
-    #def add_item(self, menu_item):
-        #self.restaurant.add_item(menu_item)
+    def add_item(self, menu_item):
+        self.restaurant.add_item(menu_item)
