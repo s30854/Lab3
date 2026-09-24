@@ -20,7 +20,7 @@ class Controller:
         raise RuntimeError('create_ui: all subclasses must implement')
 
     def done(self):
-        raise RuntimeError('done: some subclasses must implement')
+        self.view.set_controller(RestaurantController(self.view, self.restaurant))
 
     def place_order(self):
         raise RuntimeError('place_order: some subclasses must implement')
