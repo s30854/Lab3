@@ -20,21 +20,27 @@ class Table:
 class Order:
     def __init__(self):
         self.items=[]
-        price=0
-
 
     def total_cost(self):
-        for price in self.items:
-            price += MENU_ITEMS[price.menu_item]
+        return sum(item.price for item in self.items)
 
     def add_item(self,menu_item):
-        self.items.append(menu_item)
+        self.items.append(OrderItem(menu_item))
 
+    def unordered_items(self):
+        return [item for item in self.items if not item.ordered]
+
+    def place_new_orders(self):
+        for item in self.unordered_items():
+            item.mark_as_ordered()
 
 class OrderItem:
     def __init__(self, menu_item):
         self.menu_item = menu_item
+        self.ordered=False
 
+    def mark_as_ordered(self,items):
+        self.ordered = True
 
 class MenuItem:
 

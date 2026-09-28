@@ -63,8 +63,6 @@ class TableController(Controller):
         seat_number = self.table.n_seats
         self.view.set_controller(OrderController(self.view, self.restaurant,self.table, seat_number))
 
-
-
 class OrderController(Controller):
     def __init__(self,view, restaurant,table, seat_number):
         super().__init__(view, restaurant)
@@ -78,3 +76,8 @@ class OrderController(Controller):
 
     def add_item(self, menu_item):
         self.order.add_item(menu_item)
+    def update_order(self):
+        self.order.place_new_orders()
+        self.view.draw_order(self.order) #Something left to do with this
+        self.view.set_controller(TableController(self.view, self.restaurant,self.table))
+

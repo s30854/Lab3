@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16efe23a-ff94-41f7-bf2a-3fae74ae75f6" name="Changes" comment="seq-TQ-touch-seat is done">
+    <list default="true" id="16efe23a-ff94-41f7-bf2a-3fae74ae75f6" name="Changes" comment="working on touch seat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
@@ -26,7 +26,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/s30854/Lab3.git&quot;,
-    &quot;accountId&quot;: &quot;75b251f1-0c5f-4cba-82e4-8e8a66f61471&quot;
+    &quot;accountId&quot;: &quot;c8006762-d029-44e7-bc97-ea6f3e5d002f&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -118,7 +118,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-c59985aa861c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.24374.152" />
+        <option value="bundled-python-sdk-ca5e2b39c7df-6e1f45a539f7-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.29346.308" />
       </set>
     </attachedChunks>
   </component>
@@ -195,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790279604257</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="working on touch seat">
+      <option name="closed" value="true" />
+      <created>1790281484749</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1790281484749</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +217,8 @@
     <MESSAGE value="2 tests complete" />
     <MESSAGE value="seq-TQ-done is done" />
     <MESSAGE value="seq-TQ-touch-seat is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="seq-TQ-touch-seat is done" />
+    <MESSAGE value="working on touch seat" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on touch seat" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Lab3$oorms.coverage" NAME="oorms Coverage Results" MODIFIED="1790281153648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
