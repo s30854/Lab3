@@ -15,14 +15,18 @@ class Table:
         self.orders = [Order() for _ in range(seats)]
 
     def order_for(self, seat):
-        return self.orders[seat-1]
+        return self.orders[seat]
+
+    def has_order_for(self, seat):
+        order = self.order_for(seat)
+        return bool(order.items) and not order.unordered_items()
 
 class Order:
     def __init__(self):
         self.items=[]
 
     def total_cost(self):
-        return sum(item.price for item in self.items)
+        return sum(item.details.price for item in self.items)
 
     def add_item(self,menu_item):
         self.items.append(OrderItem(menu_item))
@@ -33,13 +37,16 @@ class Order:
     def place_new_orders(self):
         for item in self.unordered_items():
             item.mark_as_ordered()
+    
+    def remove_unordered_items(self):
+        self.items = [item for item in self.items if item.ordered]
 
 class OrderItem:
     def __init__(self, menu_item):
-        self.menu_item = menu_item
-        self.ordered=False
+        self.details = menu_item
+        self.ordered = False
 
-    def mark_as_ordered(self,items):
+    def mark_as_ordered(self):
         self.ordered = True
 
 class MenuItem:
